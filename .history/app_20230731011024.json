@@ -11,7 +11,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -31,6 +33,6 @@
         "projectId": "f1490e33-860b-402d-9872-9a6d03889754"
       }
     },
-    "Scheme": "GoogleLoginV2"
+    ""Scheme:
   }
 }

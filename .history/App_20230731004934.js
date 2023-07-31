@@ -6,7 +6,7 @@
 
 import * as React from "react";
 import { StatusBar } from "expo-status-bar";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from 'expo-auth-session/providers/google'
 import * as AsyncStorage from '@react-native-async-storage/async-storage'
@@ -15,9 +15,9 @@ WebBrowser.maybeCompleteAuthSession();
 
 export default function App() {
   const [userInfo, setUserInfo] = React.useState()
-  const [request, response, promptAsync] = Google.useAuthRequest({
+  const [] = Google.useAuthRequest({
     androidClientId:
-      "653357165851-pmon2earat97vos49ujtpdsf6f5pofqg.apps.googleusercontent.com",
+      653357165851-pmon2earat97vos49ujtpdsf6f5pofqg.apps.googleusercontent.com,
   });
 
 
@@ -25,7 +25,6 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>TESTE</Text>
-      <Button title="Sign in with Google" onPress={()=> promptAsync()}/>
       <StatusBar style="auto" />
     </View>
   );

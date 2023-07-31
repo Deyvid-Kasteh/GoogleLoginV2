@@ -25,7 +25,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>TESTE</Text>
-      <Button title="Sign in with Google" onPress={()=> promptAsync()}/>
+      <Button title="Sign in with Google" onPress={()=>}/>
       <StatusBar style="auto" />
     </View>
   );
