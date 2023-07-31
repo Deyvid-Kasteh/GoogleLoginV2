@@ -20,15 +20,11 @@ export default function App() {
       "653357165851-pmon2earat97vos49ujtpdsf6f5pofqg.apps.googleusercontent.com",
   });
 
-  React.useEffect(() => {
-    handleSignInWithGoogle()
-  }, [response])
-
   async function handleSignInWithGoogle() {
     const user = await AsyncStorage.setItem("@user");
     if (!user) {
       if (response?.type === "success") {
-        await getUserInfo(response.authentication.accessToken);
+        await getUserInfo();
       }
     } else {
       setUserInfo(JSON.parse(user));
@@ -54,13 +50,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>TESTE</Text>
-      <Text>{JSON.stringify(userInfo)}</Text>
-      <Text>TESTE</Text>
-      <Text>TESTE</Text>
-
       <Button title="Sign in with Google" onPress={() => promptAsync()} />
-      <Button title="Delete local storage" onPress={() => AsyncStorage.removeItem("@user") } />
-
       <StatusBar style="auto" />
     </View>
   );

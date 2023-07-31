@@ -54,13 +54,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>TESTE</Text>
-      <Text>{JSON.stringify(userInfo)}</Text>
+      <Text>{JSON.stringify}</Text>
       <Text>TESTE</Text>
       <Text>TESTE</Text>
 
       <Button title="Sign in with Google" onPress={() => promptAsync()} />
-      <Button title="Delete local storage" onPress={() => AsyncStorage.removeItem("@user") } />
-
       <StatusBar style="auto" />
     </View>
   );

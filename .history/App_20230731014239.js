@@ -8,59 +8,28 @@ import * as React from "react";
 import { StatusBar } from "expo-status-bar";
 import { Button, StyleSheet, Text, View } from "react-native";
 import * as WebBrowser from "expo-web-browser";
-import * as Google from "expo-auth-session/providers/google";
-import * as AsyncStorage from "@react-native-async-storage/async-storage";
+import * as Google from 'expo-auth-session/providers/google'
+import * as AsyncStorage from '@react-native-async-storage/async-storage'
 
 WebBrowser.maybeCompleteAuthSession();
 
 export default function App() {
-  const [userInfo, setUserInfo] = React.useState();
+  const [userInfo, setUserInfo] = React.useState()
   const [request, response, promptAsync] = Google.useAuthRequest({
     androidClientId:
       "653357165851-pmon2earat97vos49ujtpdsf6f5pofqg.apps.googleusercontent.com",
   });
 
-  React.useEffect(() => {
-    handleSignInWithGoogle()
-  }, [response])
-
   async function handleSignInWithGoogle() {
     const user = await AsyncStorage.setItem("@user");
-    if (!user) {
-      if (response?.type === "success") {
-        await getUserInfo(response.authentication.accessToken);
-      }
-    } else {
-      setUserInfo(JSON.parse(user));
-    }
   }
 
-  const getUserInfo = async (token) => {
-    if (!token) return;
-    try {
-      const response = await fetch(
-        "https://www.googleapis.com/userinfo/v2/me",
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
 
-      const user = await response.json();
-      await AsyncStorage.setItem("@user", JSON.stringify(user));
-      setUserInfo(user);
-    } catch (error) {}
-  };
 
   return (
     <View style={styles.container}>
       <Text>TESTE</Text>
-      <Text>{JSON.stringify(userInfo)}</Text>
-      <Text>TESTE</Text>
-      <Text>TESTE</Text>
-
-      <Button title="Sign in with Google" onPress={() => promptAsync()} />
-      <Button title="Delete local storage" onPress={() => AsyncStorage.removeItem("@user") } />
-
+      <Button title="Sign in with Google" onPress={()=> promptAsync()}/>
       <StatusBar style="auto" />
     </View>
   );

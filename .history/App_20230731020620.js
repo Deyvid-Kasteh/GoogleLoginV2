@@ -59,7 +59,7 @@ export default function App() {
       <Text>TESTE</Text>
 
       <Button title="Sign in with Google" onPress={() => promptAsync()} />
-      <Button title="Delete local storage" onPress={() => AsyncStorage.removeItem("@user") } />
+      <Button title="Delete local storage" onPress={() => A()} />
 
       <StatusBar style="auto" />
     </View>
